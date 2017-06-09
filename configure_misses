@@ -1,0 +1,11 @@
+Configure miss: po/Makevars requiring hack
+Configure miss: process.h usability
+Configure miss: process.h presence
+Configure miss: cdk/cdk.h usability
+Configure miss: cdk/cdk.h presence
+Configure miss: cdk/cdk.h
+Configure miss: aalib.h usability
+Configure miss: aalib.h presence
+Configure miss: aalib.h
+Configure miss: rl_completion_append_character in -lreadline
+Configure miss: rl_completion_matches in -lreadline
