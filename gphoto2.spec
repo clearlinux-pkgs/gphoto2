@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x2209D6902F969C95 (meissner@suse.de)
 #
 Name     : gphoto2
-Version  : 2.5.14
-Release  : 3
-URL      : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.14/gphoto2-2.5.14.tar.gz
-Source0  : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.14/gphoto2-2.5.14.tar.gz
-Source99 : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.14/gphoto2-2.5.14.tar.gz.asc
+Version  : 2.5.15
+Release  : 4
+URL      : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.15/gphoto2-2.5.15.tar.gz
+Source0  : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.15/gphoto2-2.5.15.tar.gz
+Source99 : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.15/gphoto2-2.5.15.tar.gz.asc
 Summary  : Command line interface to libgphoto2
 Group    : Development/Tools
 License  : GPL-2.0
@@ -51,14 +51,14 @@ locales components for the gphoto2 package.
 
 
 %prep
-%setup -q -n gphoto2-2.5.14
+%setup -q -n gphoto2-2.5.15
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1497020884
+export SOURCE_DATE_EPOCH=1507074918
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -70,7 +70,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1497020884
+export SOURCE_DATE_EPOCH=1507074918
 rm -rf %{buildroot}
 %make_install
 %find_lang gphoto2
