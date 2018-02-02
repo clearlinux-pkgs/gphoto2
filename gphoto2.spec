@@ -6,7 +6,7 @@
 #
 Name     : gphoto2
 Version  : 2.5.15
-Release  : 4
+Release  : 5
 URL      : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.15/gphoto2-2.5.15.tar.gz
 Source0  : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.15/gphoto2-2.5.15.tar.gz
 Source99 : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.15/gphoto2-2.5.15.tar.gz.asc
