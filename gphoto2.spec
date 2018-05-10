@@ -6,7 +6,7 @@
 #
 Name     : gphoto2
 Version  : 2.5.17
-Release  : 6
+Release  : 7
 URL      : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.17/gphoto2-2.5.17.tar.gz
 Source0  : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.17/gphoto2-2.5.17.tar.gz
 Source99 : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.17/gphoto2-2.5.17.tar.gz.asc
