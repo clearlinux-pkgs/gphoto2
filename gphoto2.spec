@@ -5,17 +5,18 @@
 # Source0 file verified with key 0x2209D6902F969C95 (meissner@suse.de)
 #
 Name     : gphoto2
-Version  : 2.5.17
-Release  : 7
-URL      : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.17/gphoto2-2.5.17.tar.gz
-Source0  : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.17/gphoto2-2.5.17.tar.gz
-Source99 : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.17/gphoto2-2.5.17.tar.gz.asc
+Version  : 2.5.20
+Release  : 8
+URL      : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.20/gphoto2-2.5.20.tar.gz
+Source0  : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.20/gphoto2-2.5.20.tar.gz
+Source99 : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.20/gphoto2-2.5.20.tar.gz.asc
 Summary  : Command line interface to libgphoto2
 Group    : Development/Tools
 License  : GPL-2.0
-Requires: gphoto2-bin
-Requires: gphoto2-doc
-Requires: gphoto2-locales
+Requires: gphoto2-bin = %{version}-%{release}
+Requires: gphoto2-license = %{version}-%{release}
+Requires: gphoto2-locales = %{version}-%{release}
+Requires: gphoto2-man = %{version}-%{release}
 BuildRequires : libgphoto2-dev
 BuildRequires : libjpeg-turbo-dev
 BuildRequires : popt-dev
@@ -29,6 +30,8 @@ any camera operation that can be done. This is the main user interface.
 %package bin
 Summary: bin components for the gphoto2 package.
 Group: Binaries
+Requires: gphoto2-license = %{version}-%{release}
+Requires: gphoto2-man = %{version}-%{release}
 
 %description bin
 bin components for the gphoto2 package.
@@ -37,9 +40,18 @@ bin components for the gphoto2 package.
 %package doc
 Summary: doc components for the gphoto2 package.
 Group: Documentation
+Requires: gphoto2-man = %{version}-%{release}
 
 %description doc
 doc components for the gphoto2 package.
+
+
+%package license
+Summary: license components for the gphoto2 package.
+Group: Default
+
+%description license
+license components for the gphoto2 package.
 
 
 %package locales
@@ -50,15 +62,23 @@ Group: Default
 locales components for the gphoto2 package.
 
 
+%package man
+Summary: man components for the gphoto2 package.
+Group: Default
+
+%description man
+man components for the gphoto2 package.
+
+
 %prep
-%setup -q -n gphoto2-2.5.17
+%setup -q -n gphoto2-2.5.20
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1524062132
+export SOURCE_DATE_EPOCH=1540740074
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -70,8 +90,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1524062132
+export SOURCE_DATE_EPOCH=1540740074
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/gphoto2
+cp COPYING %{buildroot}/usr/share/package-licenses/gphoto2/COPYING
 %make_install
 %find_lang gphoto2
 
@@ -83,9 +105,16 @@ rm -rf %{buildroot}
 /usr/bin/gphoto2
 
 %files doc
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 %doc /usr/share/doc/gphoto2/*
-%doc /usr/share/man/man1/*
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/gphoto2/COPYING
+
+%files man
+%defattr(0644,root,root,0755)
+/usr/share/man/man1/gphoto2.1
 
 %files locales -f gphoto2.lang
 %defattr(-,root,root,-)
