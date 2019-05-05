@@ -6,11 +6,11 @@
 #
 Name     : gphoto2
 Version  : 2.5.20
-Release  : 8
+Release  : 9
 URL      : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.20/gphoto2-2.5.20.tar.gz
 Source0  : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.20/gphoto2-2.5.20.tar.gz
 Source99 : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.20/gphoto2-2.5.20.tar.gz.asc
-Summary  : Command line interface to libgphoto2
+Summary  : A digital camera download and access program.
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: gphoto2-bin = %{version}-%{release}
@@ -31,7 +31,6 @@ any camera operation that can be done. This is the main user interface.
 Summary: bin components for the gphoto2 package.
 Group: Binaries
 Requires: gphoto2-license = %{version}-%{release}
-Requires: gphoto2-man = %{version}-%{release}
 
 %description bin
 bin components for the gphoto2 package.
@@ -78,7 +77,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1540740074
+export SOURCE_DATE_EPOCH=1557077648
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -90,7 +96,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1540740074
+export SOURCE_DATE_EPOCH=1557077648
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gphoto2
 cp COPYING %{buildroot}/usr/share/package-licenses/gphoto2/COPYING
