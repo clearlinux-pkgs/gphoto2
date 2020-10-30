@@ -6,11 +6,11 @@
 #
 Name     : gphoto2
 Version  : 2.5.23
-Release  : 10
+Release  : 11
 URL      : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.23/gphoto2-2.5.23.tar.gz
 Source0  : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.23/gphoto2-2.5.23.tar.gz
-Source99 : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.23/gphoto2-2.5.23.tar.gz.asc
-Summary  : A digital camera download and access program.
+Source1  : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.23/gphoto2-2.5.23.tar.gz.asc
+Summary  : Command line interface to libgphoto2
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: gphoto2-bin = %{version}-%{release}
@@ -71,35 +71,37 @@ man components for the gphoto2 package.
 
 %prep
 %setup -q -n gphoto2-2.5.23
+cd %{_builddir}/gphoto2-2.5.23
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1559493264
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1604093934
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check || :
+make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1559493264
+export SOURCE_DATE_EPOCH=1604093934
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gphoto2
-cp COPYING %{buildroot}/usr/share/package-licenses/gphoto2/COPYING
+cp %{_builddir}/gphoto2-2.5.23/COPYING %{buildroot}/usr/share/package-licenses/gphoto2/68c94ffc34f8ad2d7bfae3f5a6b996409211c1b1
 %make_install
 %find_lang gphoto2
 
@@ -116,7 +118,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/gphoto2/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/gphoto2/COPYING
+/usr/share/package-licenses/gphoto2/68c94ffc34f8ad2d7bfae3f5a6b996409211c1b1
 
 %files man
 %defattr(0644,root,root,0755)
