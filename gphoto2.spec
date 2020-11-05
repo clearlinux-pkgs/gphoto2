@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x2209D6902F969C95 (meissner@suse.de)
 #
 Name     : gphoto2
-Version  : 2.5.23
-Release  : 11
-URL      : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.23/gphoto2-2.5.23.tar.gz
-Source0  : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.23/gphoto2-2.5.23.tar.gz
-Source1  : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.23/gphoto2-2.5.23.tar.gz.asc
+Version  : 2.5.26
+Release  : 12
+URL      : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.26/gphoto2-2.5.26.tar.gz
+Source0  : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.26/gphoto2-2.5.26.tar.gz
+Source1  : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.26/gphoto2-2.5.26.tar.gz.asc
 Summary  : Command line interface to libgphoto2
 Group    : Development/Tools
 License  : GPL-2.0
@@ -70,15 +70,15 @@ man components for the gphoto2 package.
 
 
 %prep
-%setup -q -n gphoto2-2.5.23
-cd %{_builddir}/gphoto2-2.5.23
+%setup -q -n gphoto2-2.5.26
+cd %{_builddir}/gphoto2-2.5.26
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1604093934
+export SOURCE_DATE_EPOCH=1604620474
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -98,10 +98,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1604093934
+export SOURCE_DATE_EPOCH=1604620474
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gphoto2
-cp %{_builddir}/gphoto2-2.5.23/COPYING %{buildroot}/usr/share/package-licenses/gphoto2/68c94ffc34f8ad2d7bfae3f5a6b996409211c1b1
+cp %{_builddir}/gphoto2-2.5.26/COPYING %{buildroot}/usr/share/package-licenses/gphoto2/68c94ffc34f8ad2d7bfae3f5a6b996409211c1b1
 %make_install
 %find_lang gphoto2
 
