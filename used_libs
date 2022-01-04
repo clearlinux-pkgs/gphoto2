@@ -4,4 +4,4 @@ libgcc_s.so.1
 libgphoto2.so.6
 libgphoto2_port.so.12
 libpopt.so.0
-libpthread.so.0
+libreadline.so.8
