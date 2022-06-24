@@ -6,7 +6,7 @@
 #
 Name     : gphoto2
 Version  : 2.5.28
-Release  : 15
+Release  : 16
 URL      : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.28/gphoto2-2.5.28.tar.xz
 Source0  : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.28/gphoto2-2.5.28.tar.xz
 Source1  : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.28/gphoto2-2.5.28.tar.xz.asc
@@ -92,7 +92,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641329570
+export SOURCE_DATE_EPOCH=1656035780
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -124,7 +124,7 @@ cd ../buildavx2;
 make %{?_smp_mflags} check || : || :
 
 %install
-export SOURCE_DATE_EPOCH=1641329570
+export SOURCE_DATE_EPOCH=1656035780
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gphoto2
 cp %{_builddir}/gphoto2-2.5.28/COPYING %{buildroot}/usr/share/package-licenses/gphoto2/68c94ffc34f8ad2d7bfae3f5a6b996409211c1b1
@@ -133,7 +133,7 @@ pushd ../buildavx2/
 popd
 %make_install
 %find_lang gphoto2
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
