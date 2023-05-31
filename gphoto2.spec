@@ -7,7 +7,7 @@
 #
 Name     : gphoto2
 Version  : 2.5.28
-Release  : 23
+Release  : 24
 URL      : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.28/gphoto2-2.5.28.tar.xz
 Source0  : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.28/gphoto2-2.5.28.tar.xz
 Source1  : https://sourceforge.net/projects/gphoto/files/gphoto/2.5.28/gphoto2-2.5.28.tar.xz.asc
@@ -87,7 +87,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682975327
+export SOURCE_DATE_EPOCH=1685542908
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -119,7 +119,7 @@ cd ../buildavx2;
 make %{?_smp_mflags} check || : || :
 
 %install
-export SOURCE_DATE_EPOCH=1682975327
+export SOURCE_DATE_EPOCH=1685542908
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gphoto2
 cp %{_builddir}/gphoto2-%{version}/COPYING %{buildroot}/usr/share/package-licenses/gphoto2/68c94ffc34f8ad2d7bfae3f5a6b996409211c1b1 || :
